@@ -1,12 +1,24 @@
 {
-  "name": "savings-lottery",
+  "name": "lottery-box",
   "version": "1.0.0",
-  "private": true,
+  "main": "index.js",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@/components/ui/card": "latest",
-    "@/components/ui/alert": "latest",
-    "lucide-react": "latest"
-  }
+    "lucide-react": "^0.274.0",  // or the version you're using
+    "@tailwindcss/forms": "^0.5.3",  // and any other dependencies
+    "tailwindcss": "^3.1.8",  // ensure your styling dependencies are here
+    "react-scripts": "^5.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "author": "",
+  "license": "ISC"
 }
