@@ -22,6 +22,7 @@ const Grid = styled.div`
 `;
 
 const Box = styled.button`
+  position: relative;
   aspect-ratio: 1;
   border: 2px solid #2196f3;
   border-radius: 8px;
@@ -42,13 +43,45 @@ const Box = styled.button`
   }
 `;
 
+const PositionLabel = styled.span`
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 12px;
+  color: ${props => props.revealed ? 'rgba(255, 255, 255, 0.8)' : '#666'};
+`;
+
 const Instructions = styled.p`
   text-align: center;
   color: #666;
   margin-top: 20px;
 `;
 
+const Legend = styled.div`
+  margin-top: 20px;
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 8px;
+`;
+
+const LegendTitle = styled.h3`
+  color: #333;
+  margin-bottom: 10px;
+`;
+
+const LegendGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+`;
+
 const LotteryBox = () => {
+  // Position labels
+  const positions = [
+    'TL', 'TM-L', 'TM', 'TM-R', 'TR',
+    'BL', 'BM-L', 'BM', 'BM-R', 'BR'
+  ];
+
   // Initialize shuffled numbers
   const [numbers] = useState(() => {
     const nums = Array.from({length: 10}, (_, i) => i + 1);
@@ -69,9 +102,25 @@ const LotteryBox = () => {
     }
   };
 
+  const getPositionName = (code) => {
+    const positions = {
+      'TL': 'Top Left',
+      'TM-L': 'Top Middle-Left',
+      'TM': 'Top Middle',
+      'TM-R': 'Top Middle-Right',
+      'TR': 'Top Right',
+      'BL': 'Bottom Left',
+      'BM-L': 'Bottom Middle-Left',
+      'BM': 'Bottom Middle',
+      'BM-R': 'Bottom Middle-Right',
+      'BR': 'Bottom Right'
+    };
+    return positions[code];
+  };
+
   return (
     <Container>
-      <Title>Savings Group Random Selector</Title>
+      <Title>Savings Group Lottery</Title>
       <Grid>
         {numbers.map((number, index) => (
           <Box
@@ -79,13 +128,26 @@ const LotteryBox = () => {
             onClick={() => handleClick(index)}
             revealed={revealed[index]}
           >
+            <PositionLabel revealed={revealed[index]}>
+              {positions[index]}
+            </PositionLabel>
             {revealed[index] ? number : '?'}
           </Box>
         ))}
       </Grid>
       <Instructions>
-        Admin: Click on each box to reveal the number when a participant selects it
+        Ask participants to choose a box by its position code (e.g., "TL" for Top Left)
       </Instructions>
+      <Legend>
+        <LegendTitle>Position Guide:</LegendTitle>
+        <LegendGrid>
+          {positions.map((pos) => (
+            <div key={pos}>
+              <strong>{pos}</strong>: {getPositionName(pos)}
+            </div>
+          ))}
+        </LegendGrid>
+      </Legend>
     </Container>
   );
 };
