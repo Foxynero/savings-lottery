@@ -71,7 +71,7 @@ const LotteryBox = () => {
 
   return (
     <Container>
-      <Title>Savings Group Lottery</Title>
+      <Title>Savings Group Random Selector</Title>
       <Grid>
         {numbers.map((number, index) => (
           <Box
