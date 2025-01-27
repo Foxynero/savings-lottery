@@ -1,13 +1,7 @@
-import React from 'react';
-import LotteryBox from './LotteryBox'; // If you have a LotteryBox component
+import LotteryBox from './LotteryBox';
 
-const App = () => {
-  return (
-    <div className="App">
-      <h1>Welcome to the Savings Group!</h1>
-      <LotteryBox />
-    </div>
-  );
-};
+function App() {
+  return <LotteryBox />;
+}
 
 export default App;
