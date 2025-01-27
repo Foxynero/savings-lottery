@@ -5,9 +5,9 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "lucide-react": "^0.274.0",  // or the version you're using
-    "@tailwindcss/forms": "^0.5.3",  // and any other dependencies
-    "tailwindcss": "^3.1.8",  // ensure your styling dependencies are here
+    "lucide-react": "^0.274.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "tailwindcss": "^3.1.8",
     "react-scripts": "^5.0.0"
   },
   "devDependencies": {
